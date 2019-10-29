@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchCity } from '../../action';
+import { fetchCitySuccess } from '../../action';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import './search-bar.css';
@@ -16,7 +16,7 @@ class SearchBar extends Component {
         })
     }
     handleSubmit = (event) => {
-        this.props.fetchCity(this.state.value)
+        this.props.fetchCitySuccess(this.state.value)
         this.setState({value: ''});
         event.preventDefault();
     }
@@ -37,4 +37,4 @@ class SearchBar extends Component {
 }
 
 
-export default connect(null, {fetchCity})(SearchBar) 
+export default connect(null, {fetchCitySuccess})(SearchBar) 

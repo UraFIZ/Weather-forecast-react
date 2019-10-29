@@ -1,16 +1,53 @@
-
-
-// import Api from '../services/wether-forcast-service';
+import {transformData, deleteCite} from '../Utils'
+const fetchCityRequest = () => {
+    return {
+        type: 'FETCH_CITY_REQUEST'
+    }
+}
+const fetchCityError = (error) => {
+    return {
+        type: 'FETCH_CITIES_ERROR',
+        payload: error
+    }
+}
+const fetchCItyLoaded = (city) => {
+    return {
+        type: 'FETCH_CITIS_SUCCESS',
+        payload: city
+    }
+}
+export const deleteCity = (city) => {
+    const cards = JSON.parse(localStorage.getItem('cards'));
+    const reduceData = deleteCite(cards,city);
+    localStorage.setItem('cards', JSON.stringify(reduceData));
+    return {
+        type: 'DELETE_CITY',
+        payload: reduceData, 
+    }
+}
 const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
-export const fetchCity = (city) => async dispatch => {
+export const fetchCitySuccess = (city) => async dispatch => {
+    fetchCityRequest();
     const apo_call = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
     )
+    if (!apo_call.ok) {
+          fetchCityError(apo_call.status);
+      }
     const response = await apo_call.json();
-    dispatch({
-        type: 'FETCH_CITIS_SUCCESS',
-        payload: response
-    })
+    const transformCity = transformData(response)
+    if(JSON.parse(localStorage.getItem('cards') !== null)){
+        const citisFromLS = JSON.parse(localStorage.getItem('cards'));
+        if(citisFromLS[response.name] === undefined) {
+          console.log('enter')
+         const newCites = Object.assign({},citisFromLS,  transformCity)
+          localStorage.setItem('cards', JSON.stringify(newCites));
+        }
+      }else{
+        console.log('ls is empty');
+         localStorage.setItem('cards', JSON.stringify(transformCity))
+      }
+    dispatch(fetchCItyLoaded(transformCity))
 }
 export const fetchSelectedCard = (city) => async dispatch => {
     const apo_call = await fetch(

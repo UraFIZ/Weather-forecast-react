@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './card-list.css';
 import Card from '../card/card';
 import { connect } from 'react-redux';
+import {deleteCity} from '../../action'
 
 class CardList extends Component {
 // state = {
@@ -23,7 +24,7 @@ class CardList extends Component {
     const cardsLS = areCardLS ? Object.values(JSON.parse(localStorage.getItem('cards'))) : [];
     const cities = cardsLS.map(item => {
         return (
-         <Card data={item}/>
+         <Card key={item.id} data={item} deleteCity={this.props.deleteCity}/>
         )
       });
     return (
@@ -33,18 +34,11 @@ class CardList extends Component {
     );
   }
 }
-const mapStateToProps = ({ cityList: {citis, currentCity} }) => {
-  if(JSON.parse(localStorage.getItem('cards') !== null)){
-    const citisFromLS = JSON.parse(localStorage.getItem('cards'));
-    if(citisFromLS[currentCity] === undefined) {
-      localStorage.setItem('cards', JSON.stringify(citis));
-    }
-  }else{
-      Object.entries(citis).length !== 0 && localStorage.setItem('cards', JSON.stringify(citis))
-  }
+const mapStateToProps = ({ cityList: {citis} }) => {
+
 return {
   citis  
 }
 }
 
-export default connect(mapStateToProps)(CardList)
+export default connect(mapStateToProps, {deleteCity})(CardList)

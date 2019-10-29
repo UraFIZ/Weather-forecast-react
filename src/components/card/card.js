@@ -2,8 +2,8 @@ import React from 'react'
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
- function ACard({ data }) {
-     const {city, id, imainTemp, pressure, rain} = data;
+ function ACard(props) {
+     const {city, id, imainTemp, pressure, rain} = props.data;
     return (
         <Card key={id} style={{ width: '17rem' }}>
         <Card.Body>
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
           <Card.Subtitle className="mb-2 text-muted">The pressure is the following {pressure}</Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">Now we have {rain}</Card.Subtitle>
           <Link to={`/${city}`}>Show detele info</Link>
-          {/* <Link>Delete a card</Link> */}
+          <button onClick={()=> props.deleteCity(city)}>Delete a city</button>
           {/* <Card.Link href="#">Show detele info</Card.Link>
           <Card.Link href="#">Delete a card</Card.Link> */}
         </Card.Body>
