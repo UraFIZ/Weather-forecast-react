@@ -15,7 +15,6 @@ this.props.fetchInitialDataFormLS()
     const {citis, error, loading, updateSelectedCard } = this.props;
  
     const transformObjOfArr = (citis !== null) ? Object.values(citis) : [];
-    console.log(transformObjOfArr);
     const cardsOfCitis = transformObjOfArr.map(item => {
       return (
         <Card key={item.id} data={item} deleteCity={this.props.deleteCity} updateSelectedCard={updateSelectedCard}/>
@@ -35,7 +34,6 @@ this.props.fetchInitialDataFormLS()
   }
 }
 const mapStateToProps = ({ cityList: { citis, error, loading } }) => {
-  console.log(citis)
   return {
     citis, error, loading
   }

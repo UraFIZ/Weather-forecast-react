@@ -14,7 +14,6 @@ export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
 export const updateSelectedCard =(city) => async (dispatch) => {
     const resopnce = await fetchCite(city);
     const newObjectOfCity = updateCurrentCity(resopnce);
-    console.log(newObjectOfCity);
     localStorage.setItem('cards', JSON.stringify(newObjectOfCity));
     dispatch(fetchCityRequest());
     setTimeout(() => dispatch(updateCity(newObjectOfCity)), 800);
@@ -84,7 +83,6 @@ export const fetchCitySuccess = (city) => async dispatch => {
           dispatch(fetchCItyLoaded(newCitis))
         }
       }else{
-        console.log('ls is empty');
          localStorage.setItem('cards', JSON.stringify(transformCity))
          dispatch(fetchCityRequest());
          dispatch(fetchCItyLoaded(transformCity))

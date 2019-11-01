@@ -12,12 +12,12 @@ import { Link } from 'react-router-dom';
         return (
             <div>
                <Link to="/">Back to Index</Link> 
+               <div>{this.props.city.name}</div>
             </div>
         )
     }
 }
-const mapStateToProps = ({cardList}, ownProps) => {
-return {city: cardList.city
-}
+const mapStateToProps = ({cardList}) => {
+return {city: cardList.activeCity}
 }
 export default connect(mapStateToProps, {fetchSelectedCard})(CardDetaile)

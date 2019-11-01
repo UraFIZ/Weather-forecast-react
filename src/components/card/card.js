@@ -28,7 +28,6 @@ const dataToRender = (
   )
 }
 const mapStateToProps = ({ cityList: { citis, error, loading } }) => {
-  console.log(loading)
   return {
     citis, error, loading
   }

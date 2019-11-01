@@ -7,7 +7,6 @@ const ErrorIndicator = ({error}) => {
 };
 
 const mapStateToProps = ({cityList: {error}}) => {
-  console.log(error);
   return {
       error
   }
