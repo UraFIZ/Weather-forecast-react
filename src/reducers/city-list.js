@@ -1,4 +1,4 @@
-import _ from 'lodash';
+
 const updateCitisList = (state, action) => {
 
   const currentCityName = (data) => {
@@ -49,8 +49,13 @@ const updateCitisList = (state, action) => {
       return {
         ...state,
         citis: payload,
-      }  
-
+      };
+      case 'UPDATE_CITY_DATA':  
+      return {
+        ...state,
+        citis: action.payload,
+        loading: false
+      };
     default:
       return state;
   }

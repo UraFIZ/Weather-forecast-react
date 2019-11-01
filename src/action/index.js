@@ -1,8 +1,8 @@
-import {transformData, deleteCite} from '../Utils'
+import {transformData, deleteCite, updateCurrentCity} from '../Utils'
+
 
 export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
     if(data !== null && Object.entries(data).length !== 0 ) {
-        console.log("object")
         dispatch(fetchCityRequest())
         data.map(item => dispatch(fetchCitySuccess(item)))
     }else{
@@ -10,6 +10,20 @@ export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
         dispatch(fetchCityInit(cards));
 
     } 
+}
+export const updateSelectedCard =(city) => async (dispatch) => {
+    const resopnce = await fetchCite(city);
+    const newObjectOfCity = updateCurrentCity(resopnce);
+    console.log(newObjectOfCity);
+    localStorage.setItem('cards', JSON.stringify(newObjectOfCity));
+    dispatch(fetchCityRequest());
+    setTimeout(() => dispatch(updateCity(newObjectOfCity)), 800);
+}
+const updateCity = (data) => {
+    return {
+        type: 'UPDATE_CITY_DATA',
+        payload: data
+     }
 }
 const fetchCityInit = (data) => {
     return {
@@ -43,10 +57,9 @@ export const deleteCity = (city) => {
         payload: reduceData, 
     }
 }
-const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
 
-export const fetchCitySuccess = (city) => async dispatch => {
-    fetchCityRequest();
+const fetchCite = async (city) => {
+    const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
     const apo_call = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
     )
@@ -54,11 +67,15 @@ export const fetchCitySuccess = (city) => async dispatch => {
           fetchCityError(apo_call.status);
       }
     const response = await apo_call.json();
+    return response;
+}
+export const fetchCitySuccess = (city) => async dispatch => {
+    fetchCityRequest();
+    const response = await fetchCite(city);
     const transformCity = transformData(response)
     if(JSON.parse(localStorage.getItem('cards') !== null)){
         const citisFromLS = JSON.parse(localStorage.getItem('cards'));
-        if(citisFromLS[response.name] === undefined) {
-          console.log('enter')
+        if(citisFromLS[transformCity.name] === undefined) {
          const newCites = Object.assign({},citisFromLS,  transformCity)
           localStorage.setItem('cards', JSON.stringify(newCites));
         }
@@ -69,10 +86,7 @@ export const fetchCitySuccess = (city) => async dispatch => {
     dispatch(fetchCItyLoaded(transformCity))
 }
 export const fetchSelectedCard = (city) => async dispatch => {
-    const apo_call = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
-    )
-    const response = await apo_call.json();
+    const response = await fetchCite(city);
     dispatch({
         type: 'FETCH_SELECTED_CARD_SUCCESS',
         payload: response

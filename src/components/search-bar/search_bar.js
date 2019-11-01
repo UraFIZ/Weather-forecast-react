@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { fetchCitySuccess } from '../../action';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import './search-bar.css';
 
 class SearchBar extends Component {

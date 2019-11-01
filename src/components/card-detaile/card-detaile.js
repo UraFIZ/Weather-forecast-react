@@ -17,8 +17,6 @@ import { Link } from 'react-router-dom';
     }
 }
 const mapStateToProps = ({cardList}, ownProps) => {
-console.log(cardList);
-console.log(ownProps);
 return {city: cardList.city
 }
 }

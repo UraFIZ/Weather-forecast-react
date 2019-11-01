@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import './card-list.css';
 import Card from '../card/card';
 import { connect } from 'react-redux';
-import { deleteCity, fetchCitySuccess, fetchCItyLoaded, fetchInitialDataFormLS } from '../../action';
+import { deleteCity, updateSelectedCard, fetchInitialDataFormLS } from '../../action';
 import ErrorIndicator from '../error-indicator';
 import Spinner from '../spinner';
 class CardList extends Component {
@@ -12,12 +12,13 @@ class CardList extends Component {
 this.props.fetchInitialDataFormLS()
   }
   render() {
-    const {citis, error, loading } = this.props;
+    const {citis, error, loading, updateSelectedCard } = this.props;
  
     const transformObjOfArr = (citis !== null) ? Object.values(citis) : [];
+    console.log(transformObjOfArr);
     const cardsOfCitis = transformObjOfArr.map(item => {
       return (
-        <Card key={item.id} data={item} deleteCity={this.props.deleteCity} loading={loading} />
+        <Card key={item.id} data={item} deleteCity={this.props.deleteCity} updateSelectedCard={updateSelectedCard}/>
       )
     });
     if (loading) {
@@ -26,7 +27,6 @@ this.props.fetchInitialDataFormLS()
     if (error) {
       return <ErrorIndicator />;
     }
-    console.log(loading);
     return (
       <div className="cardContainer">
         {cardsOfCitis}
@@ -35,6 +35,7 @@ this.props.fetchInitialDataFormLS()
   }
 }
 const mapStateToProps = ({ cityList: { citis, error, loading } }) => {
+  console.log(citis)
   return {
     citis, error, loading
   }
@@ -42,10 +43,10 @@ const mapStateToProps = ({ cityList: { citis, error, loading } }) => {
 const mapDispatchToProps = (dispatch) => {
   const cards = JSON.parse(localStorage.getItem('cards'));
   const convertObjToArr = cards !==null ? Object.keys(cards): null;
-  console.log(cards);
   return bindActionCreators({
     deleteCity: deleteCity,
-    fetchInitialDataFormLS: fetchInitialDataFormLS(convertObjToArr)
+    fetchInitialDataFormLS: fetchInitialDataFormLS(convertObjToArr),
+    updateSelectedCard: updateSelectedCard
   }, dispatch);
 };
 export default connect(mapStateToProps,mapDispatchToProps)(CardList)

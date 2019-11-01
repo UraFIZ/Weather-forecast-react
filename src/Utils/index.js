@@ -22,3 +22,26 @@ export const transformData = (peyload) => {
 export const deleteCite = (prevstate, city) => {
   return _.omit(prevstate, city);
 }
+export const updateCurrentCity = (data) => {
+  const transData = {
+    id: data.id,
+    city: data.name,
+    mainTemp: data.main.temp,
+    pressure: data.main.pressure,
+    rain: data.weather[0].main,
+    mainArr: data.main,
+    weatherArr: data.weather,
+  }
+  const cards = JSON.parse(localStorage.getItem('cards'));
+  const transformDataFormLs = Object.values(cards);
+  const inx = transformDataFormLs.findIndex(item => item.city === data.city);
+  const newUpdatedArr = [
+      ...transformDataFormLs.slice(0, inx),
+      transData, 
+      ...transformDataFormLs.slice(inx+1)
+  ]
+  return  {
+  ..._.mapKeys(newUpdatedArr, 'city')
+  }
+
+}
