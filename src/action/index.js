@@ -1,4 +1,22 @@
 import {transformData, deleteCite} from '../Utils'
+
+export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
+    if(data !== null && Object.entries(data).length !== 0 ) {
+        console.log("object")
+        dispatch(fetchCityRequest())
+        data.map(item => dispatch(fetchCitySuccess(item)))
+    }else{
+        const cards = JSON.parse(localStorage.getItem('cards'));
+        dispatch(fetchCityInit(cards));
+
+    } 
+}
+const fetchCityInit = (data) => {
+    return {
+        type: 'FETCH_INITIAL_DATA',
+        payload: data,
+    }
+}
 const fetchCityRequest = () => {
     return {
         type: 'FETCH_CITY_REQUEST'
@@ -10,7 +28,7 @@ const fetchCityError = (error) => {
         payload: error
     }
 }
-const fetchCItyLoaded = (city) => {
+export const fetchCItyLoaded = (city) => {
     return {
         type: 'FETCH_CITIS_SUCCESS',
         payload: city
@@ -26,6 +44,7 @@ export const deleteCity = (city) => {
     }
 }
 const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
+
 export const fetchCitySuccess = (city) => async dispatch => {
     fetchCityRequest();
     const apo_call = await fetch(

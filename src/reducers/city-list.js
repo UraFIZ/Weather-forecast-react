@@ -8,12 +8,19 @@ const updateCitisList = (state, action) => {
   if (state === undefined) {
     return {
       citis: {},
-      loading: true,
+      loading: false,
       error: null
     };
   }
 
   switch (action.type) {
+    case 'FETCH_INITIAL_DATA':
+      return {
+        ...state,
+        citis: action.payload,
+        loading: false,
+        error: null
+      }
     case 'FETCH_CITY_REQUEST':
       return {
         ...state,
