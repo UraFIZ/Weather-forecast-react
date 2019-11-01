@@ -70,20 +70,26 @@ const fetchCite = async (city) => {
     return response;
 }
 export const fetchCitySuccess = (city) => async dispatch => {
-    fetchCityRequest();
     const response = await fetchCite(city);
+    if(response.cod === '404') {
+        dispatch(fetchCityError(response.message));
+    }
     const transformCity = transformData(response)
     if(JSON.parse(localStorage.getItem('cards') !== null)){
         const citisFromLS = JSON.parse(localStorage.getItem('cards'));
         if(citisFromLS[transformCity.name] === undefined) {
-         const newCites = Object.assign({},citisFromLS,  transformCity)
-          localStorage.setItem('cards', JSON.stringify(newCites));
+         const newCitis = Object.assign({},citisFromLS,  transformCity)
+          localStorage.setItem('cards', JSON.stringify(newCitis));
+          dispatch(fetchCityRequest());
+          dispatch(fetchCItyLoaded(newCitis))
         }
       }else{
         console.log('ls is empty');
          localStorage.setItem('cards', JSON.stringify(transformCity))
+         dispatch(fetchCityRequest());
+         dispatch(fetchCItyLoaded(transformCity))
       }
-    dispatch(fetchCItyLoaded(transformCity))
+    
 }
 export const fetchSelectedCard = (city) => async dispatch => {
     const response = await fetchCite(city);
