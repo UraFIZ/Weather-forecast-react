@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchSelectedCard } from '../../action'
+import './card.detaile.css';
 import { Link } from 'react-router-dom';
 
  class CardDetaile extends Component {
@@ -10,9 +11,9 @@ import { Link } from 'react-router-dom';
      }
     render() {
         return (
-            <div>
-               <Link to="/">Back to Index</Link> 
-               <div>{this.props.city.name}</div>
+            <div className="section-detailse">
+                <Link to="/">Back to Index</Link> 
+                     <div>{this.props.city.name}</div>
             </div>
         )
     }

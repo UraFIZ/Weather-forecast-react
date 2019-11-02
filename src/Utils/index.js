@@ -34,7 +34,7 @@ export const updateCurrentCity = (data) => {
   }
   const cards = JSON.parse(localStorage.getItem('cards'));
   const transformDataFormLs = Object.values(cards);
-  const inx = transformDataFormLs.findIndex(item => item.city === data.city);
+  const inx = transformDataFormLs.findIndex(item => item.city === transData.city);
   const newUpdatedArr = [
       ...transformDataFormLs.slice(0, inx),
       transData, 
