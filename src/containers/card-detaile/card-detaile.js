@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchSelectedCard } from '../../action'
-import './card.detaile.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchSelectedCard } from '../../redux/action';
+import './card.detaile.css';
 
  class CardDetaile extends Component {
-     componentDidMount = () => {
-        const { id } = this.props.match.params;
-         this.props.fetchSelectedCard(id);
-     }
+
+    componentDidMount = () => {
+    const { id } = this.props.match.params;
+        this.props.fetchSelectedCard(id);
+    }
+
     render() {
         return (
             <div className="section-detailse">
@@ -18,7 +20,9 @@ import { Link } from 'react-router-dom';
         )
     }
 }
+
 const mapStateToProps = ({cardList}) => {
 return {city: cardList.activeCity}
 }
+
 export default connect(mapStateToProps, {fetchSelectedCard})(CardDetaile)

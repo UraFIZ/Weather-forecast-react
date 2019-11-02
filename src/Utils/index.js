@@ -1,3 +1,4 @@
+import React from 'react';
 import _ from 'lodash';
 
 export const compose = (...funcs) => (comp) => {
@@ -44,4 +45,58 @@ export const updateCurrentCity = (data) => {
   ..._.mapKeys(newUpdatedArr, 'city')
   }
 
+}
+export const convertToProperWeatherFormat = (data) => {
+  switch (data) {
+    case "Clouds": {
+      return "wi-day-cloudy"
+    }
+    case "Clear": {
+      return "wi-day-sunny"
+    }
+    case "Fog": {
+      return "wi-day-fog"
+    }
+    case "Mist": {
+      return "wi-day-fog"
+    }
+    case "Haze": {
+      return "wi-day-haze"
+    }
+    case "Dust": {
+      return "wi-dust"
+    }
+    case "Smoke": {
+      return "wi-smog"
+    }
+    case "Drizzle": {
+      return "wi-showers"
+    }
+    case "Rain": {
+      return "wi-rain"
+    }
+    case "Snow": {
+      return "wi-snow"
+    }
+    case "Thunderstorm": {
+      return "wi-day-thunderstorm"
+    }
+    default:
+      return "sunny"
+  }
+}
+const getCelsius = (data) => {
+  let item = Math.floor(data - 273.15);
+  return item;
+}
+
+export  const minmaxTemp = (min, max) => {
+  if (max && min) {
+    return (
+      <h3 className='card-max-min'>
+        <span className="mr-4">{getCelsius(min)}&deg;</span>
+        <span>{getCelsius(max)}&deg;</span>
+      </h3>
+    );
+  }
 }

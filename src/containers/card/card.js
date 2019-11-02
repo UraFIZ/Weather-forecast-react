@@ -2,64 +2,15 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './card.css';
-function ACard(props) {
+import { convertToProperWeatherFormat, minmaxTemp } from '../../Utils'
+
+function Card(props) {
+
   const { deleteCity, updateSelectedCard, data, } = props;
   const { city, id, mainArr, weatherArr, pressure, rain } = data;
   const { temp_min, temp_max, humidity } = mainArr
   const { main } = weatherArr[0];
-  const getCelsius = (data) => {
-    let item = Math.floor(data - 273.15);
-    return item;
-  }
-  const convertToProperWeatherFormat = (data) => {
-    switch (data) {
-      case "Clouds": {
-        return "wi-day-cloudy"
-      }
-      case "Clear": {
-        return "wi-day-sunny"
-      }
-      case "Fog": {
-        return "wi-day-fog"
-      }
-      case "Mist": {
-        return "wi-day-fog"
-      }
-      case "Haze": {
-        return "wi-day-haze"
-      }
-      case "Dust": {
-        return "wi-dust"
-      }
-      case "Smoke": {
-        return "wi-smog"
-      }
-      case "Drizzle": {
-        return "wi-showers"
-      }
-      case "Rain": {
-        return "wi-rain"
-      }
-      case "Snow": {
-        return "wi-snow"
-      }
-      case "Thunderstorm": {
-        return "wi-day-thunderstorm"
-      }
-      default:
-        return "sunny"
-    }
-  }
-  const minmaxTemp = (min, max) => {
-    if (max && min) {
-      return (
-        <h3 className='card-max-min'>
-          <span className="mr-4">{getCelsius(min)}&deg;</span>
-          <span>{getCelsius(max)}&deg;</span>
-        </h3>
-      );
-    }
-  }
+
   const dataToRender = (
     <div key={id} className="card">
       <div className="card-side card-side--front card-side--front-color">
@@ -100,4 +51,4 @@ const mapStateToProps = ({ cityList: { citis, error, loading } }) => {
     citis, error, loading
   }
 }
-export default connect(mapStateToProps)(ACard)
+export default connect(mapStateToProps)(Card)

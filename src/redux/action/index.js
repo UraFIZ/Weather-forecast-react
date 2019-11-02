@@ -1,4 +1,4 @@
-import {transformData, deleteCite, updateCurrentCity} from '../Utils'
+import {transformData, deleteCite, updateCurrentCity} from '../../Utils'
 
 
 export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{

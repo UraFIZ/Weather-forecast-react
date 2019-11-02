@@ -1,0 +1,22 @@
+.rowContainer {
+    margin-bottom: 2rem;
+}
+form {
+    display: flex;
+}
+.btn-main {
+    color: #fff !important;
+    background-color: #7ed56f !important;
+    border-color: #7ed56f !important;
+}
+.btn-main:hover {
+    color: #7ed56f !important;
+    background-color: #fff !important;
+    border-color: #7ed56f !important;
+} 
+.form-control:focus {
+    background-color: #fff !important;
+    border-color: #7ed56f !important;
+    outline: 0;
+    box-shadow: 0 0 0 2px #7ed56fd2 !important;
+}
