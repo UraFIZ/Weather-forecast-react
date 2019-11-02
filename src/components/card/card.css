@@ -1,0 +1,193 @@
+.card {
+    -webkit-perspective: 150rem;
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 400px;
+    border: none;
+}
+.card-side {
+    width: -webkit-fill-available;
+    height: 400px;
+    -webkit-transition: all .8s ease;
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15)
+}
+.card:hover .card-side--front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+.card-side--back {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.card:hover .card-side--back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    padding: 20px;
+
+}
+.card-side--back-color {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#7ed56f), to(#28b485));
+    background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+}
+.card-picture {
+    background-size: cover;
+    height: 200px;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.card-picture-Clouds {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(0,123,255,.25)), to(#495057)),url(../../assets/cloudy.png);
+    background-image: linear-gradient(to right bottom, rgba(0,123,255,.25), #495057),url(../../assets/cloudy.png);
+}
+.card-picture-Clear {
+    background-image: url(../../assets/clear.png);
+    background-image: url(../../assets/clear.png);
+}
+.card-picture-Fog {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+}
+.card-picture-Mist {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+}
+.card-picture-Haze {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+}
+.card-picture-Dust {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+}
+.card-picture-Smoke {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/smoke.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/smoke.png);
+}
+.card-picture-Drizzle {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#3d413b81), to(#6d6748)),url(../../assets/Drizzle.png);
+    background-image: linear-gradient(to right bottom, #3d413b81, #6d6748),url(../../assets/Drizzle.png);
+}
+.card-picture-Rain {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#3d413b81), to(#39a8b3)),url(../../assets/rain.png);
+    background-image: linear-gradient(to right bottom, #3d413b81, #39a8b3),url(../../assets/rain.png);
+}
+.card-picture-Snow {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#343a40), to(#007bff)),url(../../assets/snow.png);
+    background-image: linear-gradient(to right bottom, #343a40, #007bff),url(../../assets/snow.png);
+}
+.card-picture-Thunderstorm {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#212529), to(#6c757d)),url(../../assets/Thunderstorm.png);
+    background-image: linear-gradient(to right bottom, #212529, #6c757d),url(../../assets/Thunderstorm.png);
+}
+.card-heading {
+    font-size: 26px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+    position: absolute;
+    top: 12rem;
+    right: 2px;
+    width: 75%;
+}
+.card-heading-span {
+    padding: 10px 15px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+.card-heading-color  {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(126,213,111,0.85)), to(rgba(40,180,133,0.85)));
+    background-image: linear-gradient(to right bottom, rgba(126,213,111,0.85), rgba(40,180,133,0.85));
+}
+.card-max-min {
+    margin-top: 44px;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.card-btn {
+    text-transform: uppercase;
+    padding: 15px 30px;
+    display: inline-block;
+    border-radius: 100px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: #777;
+    text-decoration: none;
+    text-align: center;
+}
+.card-btn:hover {
+        -webkit-transform: translateY(-3px);
+        transform: translateY(-3px);
+        -webkit-box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+}
+.card-btn:active, .card-btn:focus {
+    outline: none;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+}
+.card-btn:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+.card-box-up {
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: orange;
+}
+.card-box-down {
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-box-down > *{
+    margin-bottom: 10px;
+}
+.card-weather-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+}
+.card-strong-text {
+    color: black;
+}

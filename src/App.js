@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import MainPage from './components/main-page/main-page';
 import CardDetaile from './components/card-detaile/card-detaile'
 import { Container } from 'react-bootstrap';
-
+import "weather-icons/css/weather-icons.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

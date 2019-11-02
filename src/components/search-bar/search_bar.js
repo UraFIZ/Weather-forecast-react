@@ -26,7 +26,7 @@ class SearchBar extends Component {
                     <Col>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Control type="text" placeholder="Enter the city for wether forecost" onChange={this.handleChange} />
-                            <Button type="submit" variant="primary">Submit</Button>
+                            <Button className="btn-main" type="submit" variant="primary">Submit</Button>
                         </Form>
                     </Col>
                 </Row>

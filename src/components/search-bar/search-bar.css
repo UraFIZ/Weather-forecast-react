@@ -4,3 +4,19 @@
 form {
     display: flex;
 }
+.btn-main {
+    color: #fff;
+    background-color: #7ed56f;
+    border-color: #7ed56f;
+}
+.btn-main:hover {
+    color: #7ed56f;
+    background-color: #fff;
+    border-color: #7ed56f;
+} 
+.form-control:focus {
+    background-color: #fff;
+    border-color: #7ed56f;
+    outline: 0;
+    box-shadow: 0 0 0 2px #7ed56fd2;
+}

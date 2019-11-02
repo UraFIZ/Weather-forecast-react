@@ -9,7 +9,7 @@ import Spinner from '../spinner';
 class CardList extends Component {
 
   componentDidMount() {
-this.props.fetchInitialDataFormLS()
+   this.props.fetchInitialDataFormLS()
   }
   render() {
     const {citis, error, loading, updateSelectedCard } = this.props;
@@ -28,7 +28,7 @@ this.props.fetchInitialDataFormLS()
     }
     return (
       <div className="cardContainer">
-        {cardsOfCitis}
+       {cardsOfCitis}
       </div>
     );
   }
