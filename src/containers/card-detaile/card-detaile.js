@@ -14,6 +14,14 @@ import './card.detaile.css';
     render() {
         return (
             <div className="section-detailse">
+                <div className="bg-video">
+                <video class="bg-video-content" autoPlay muted loop>
+                        <source src="../../assets/video.mp4" type="video/mp4 "/>
+                        <source src="../../assets/video.webm" type="video/webm" />
+                        Your browser is not supported!
+                    </video>
+                </div>
+                     
                 <Link to="/">Back to Index</Link> 
                      <div>{this.props.city.name}</div>
             </div>
