@@ -14,3 +14,60 @@
     -o-object-fit: cover;
     object-fit: cover;
 }
+.details-wrapper {
+    background-color: aquamarine;
+    width: 800px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    opacity: 0.6;
+}
+.details-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.details-title {
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    margin: 0 auto 50px;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #28b485;
+    letter-spacing: 2px;
+    transition: all .2s;
+    margin-top: 20px;
+}
+.details-title:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0,0,0,0.2);
+} 
+.details-body {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+td {
+    text-transform: uppercase;
+}
+.center {
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(199, 42, 204, 0.863);
+}
+.details-subtitle {
+    margin: 0 auto;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

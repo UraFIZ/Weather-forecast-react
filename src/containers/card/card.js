@@ -8,7 +8,7 @@ function Card(props) {
 
   const { deleteCity, updateSelectedCard, data, } = props;
   const { city, id, mainArr, weatherArr, pressure, rain } = data;
-  const { temp_min, temp_max, humidity } = mainArr
+  const { temp_min, temp_max } = mainArr
   const { main } = weatherArr[0];
 
   const dataToRender = (

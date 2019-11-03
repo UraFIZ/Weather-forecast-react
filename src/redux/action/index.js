@@ -1,4 +1,5 @@
-import {transformData, deleteCite, updateCurrentCity} from '../../Utils'
+import {transformData, deleteCite, updateCurrentCity, fetchWeatherForHours, fetchCite, formatObjectToCreatChart} from '../../Utils'
+
 
 
 export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
@@ -47,6 +48,12 @@ export const fetchCItyLoaded = (city) => {
         payload: city
     }
 }
+export const gainWetherForHours =(cities) => {
+    return {
+        type: 'GAIN_WETHER_FOR_HOURS',
+        payload: cities
+    }
+}
 export const deleteCity = (city) => {
     const cards = JSON.parse(localStorage.getItem('cards'));
     const reduceData = deleteCite(cards,city);
@@ -57,17 +64,8 @@ export const deleteCity = (city) => {
     }
 }
 
-const fetchCite = async (city) => {
-    const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
-    const apo_call = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
-    )
-    if (!apo_call.ok) {
-          fetchCityError(apo_call.status);
-      }
-    const response = await apo_call.json();
-    return response;
-}
+
+
 export const fetchCitySuccess = (city) => async dispatch => {
     const response = await fetchCite(city);
     if(response.cod === '404') {
@@ -87,6 +85,17 @@ export const fetchCitySuccess = (city) => async dispatch => {
              dispatch(fetchCityRequest());
              dispatch(fetchCItyLoaded(transformCity))
           }
+    }
+    
+    
+}
+export const fetchWeatherForHoursinDay = (city) => async dispatch => {
+    const response = await fetchWeatherForHours(city);
+    console.log(response)
+    if(response === undefined) {
+        dispatch(fetchCityError(response));
+    }else{
+      dispatch(gainWetherForHours(formatObjectToCreatChart(response)))
     }
     
     

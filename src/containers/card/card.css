@@ -135,6 +135,10 @@
     text-decoration: none;
     text-align: center;
 }
+a.card-btn {
+    text-decoration: none;
+    color: #777;
+}
 .card-btn:hover {
         -webkit-transform: translateY(-3px);
         transform: translateY(-3px);

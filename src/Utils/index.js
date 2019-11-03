@@ -85,7 +85,7 @@ export const convertToProperWeatherFormat = (data) => {
       return "sunny"
   }
 }
-const getCelsius = (data) => {
+export const getCelsius = (data) => {
   let item = Math.floor(data - 273.15);
   return item;
 }
@@ -99,4 +99,71 @@ export  const minmaxTemp = (min, max) => {
       </h3>
     );
   }
+}
+const fetchCityError = (error) => {
+  return {
+      type: 'FETCH_CITIES_ERROR',
+      payload: error
+  }
+}
+export const fetchWeatherForHours = async (city) => {
+  const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
+  const apo_call = await fetch(
+      `   https://api.openweathermap.org/data/2.5/forecast?q=${city},us&mode=json&appid=${API_KEY}`
+  )
+  if (!apo_call.ok) {
+      fetchCityError(apo_call.status);
+  }
+const response = await apo_call.json();
+return response.list;
+}
+
+export const fetchCite = async (city) => {
+  const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
+  const apo_call = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+  )
+
+  if (!apo_call.ok) {
+        fetchCityError(apo_call.status);
+    }
+  const response = await apo_call.json();
+  return response;
+}
+const getArrOfTempForHours = (data) => {
+  const result = data.map(item => {
+      return getCelsius(item.main.temp)
+  })
+  return result.slice(0, 10)
+}
+ const getArrOfDateForHours = (data) => {
+  const result = data.map(item => {
+      return item.dt_txt
+  })
+  return result.slice(0, 10);
+}
+export const formatObjectToCreatChart =(data) => {
+  const cutTempToTen = getArrOfTempForHours(data)
+  const cutDateTOTen = getArrOfDateForHours(data)
+return {
+  labels: cutDateTOTen,
+  datasets: [
+    {
+      label: "Temp for hours",
+      data: cutTempToTen,
+      backgroundColor:[
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 206, 86, 0.6)',
+        'rgba(75, 192, 192, 0.6)',
+        'rgba(153, 102, 255, 0.6)',
+        'rgba(255, 159, 64, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(255, 159, 132, 0.6)',
+        'rgba(54, 142, 235, 0.6)',
+        'rgba(255, 155, 86, 0.6)'
+      ]
+    }
+  ]
+}
 }

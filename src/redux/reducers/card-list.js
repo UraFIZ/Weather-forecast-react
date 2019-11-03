@@ -2,8 +2,7 @@ const updateCardList = (state, action) => {
     if (state === undefined) {
         return {
           activeCity: {},
-          loading: true,
-          error: null
+          chartData: {}
         };
       }
       switch (action.type) {
@@ -11,9 +10,13 @@ const updateCardList = (state, action) => {
           return {
             ...state,
             activeCity: action.payload,
-            loading: false,
-            error: null
           };
+          case 'GAIN_WETHER_FOR_HOURS':
+            return {
+              ...state,
+              chartData: action.payload
+            }
+          
         default:
           return state;
     };
