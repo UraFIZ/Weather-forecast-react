@@ -1,24 +1,6 @@
 import {transformData, deleteCite, updateCurrentCity, fetchWeatherForHours, fetchCite, formatObjectToCreatChart} from '../../Utils'
 
 
-
-export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
-    if(data !== null && Object.entries(data).length !== 0 ) {
-        dispatch(fetchCityRequest())
-        data.map(item => dispatch(fetchCitySuccess(item)))
-    }else{
-        const cards = JSON.parse(localStorage.getItem('cards'));
-        dispatch(fetchCityInit(cards));
-
-    } 
-}
-export const updateSelectedCard =(city) => async (dispatch) => {
-    const resopnce = await fetchCite(city);
-    const newObjectOfCity = updateCurrentCity(resopnce);
-    localStorage.setItem('cards', JSON.stringify(newObjectOfCity));
-    dispatch(fetchCityRequest());
-    setTimeout(() => dispatch(updateCity(newObjectOfCity)), 800);
-}
 const updateCity = (data) => {
     return {
         type: 'UPDATE_CITY_DATA',
@@ -34,6 +16,17 @@ const fetchCityInit = (data) => {
 const fetchCityRequest = () => {
     return {
         type: 'FETCH_CITY_REQUEST'
+    }
+}
+const fetchWeatherForHoursRequest = () => {
+    return {
+        type: 'FETCH_WEATHER_HAURS_REQUEST'
+    }
+}
+const fetchWeatherForHoursError = (error) => {
+    return {
+        type: 'FETCH_WEATHER_HAURS_ERROR',
+        payload: error
     }
 }
 const fetchCityError = (error) => {
@@ -54,6 +47,26 @@ export const gainWetherForHours =(cities) => {
         payload: cities
     }
 }
+
+export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
+    if(data !== null && Object.entries(data).length !== 0 ) {
+        dispatch(fetchCityRequest())
+        data.map(item => dispatch(fetchCitySuccess(item)))
+    }else{
+        const cards = JSON.parse(localStorage.getItem('cards'));
+        dispatch(fetchCityInit(cards));
+
+    } 
+}
+
+export const updateSelectedCard =(city) => async (dispatch) => {
+    const resopnce = await fetchCite(city);
+    const newObjectOfCity = updateCurrentCity(resopnce);
+    localStorage.setItem('cards', JSON.stringify(newObjectOfCity));
+    dispatch(fetchCityRequest());
+    setTimeout(() => dispatch(updateCity(newObjectOfCity)), 800);
+}
+
 export const deleteCity = (city) => {
     const cards = JSON.parse(localStorage.getItem('cards'));
     const reduceData = deleteCite(cards,city);
@@ -63,7 +76,6 @@ export const deleteCity = (city) => {
         payload: reduceData, 
     }
 }
-
 
 
 export const fetchCitySuccess = (city) => async dispatch => {
@@ -87,14 +99,17 @@ export const fetchCitySuccess = (city) => async dispatch => {
           }
     }
     
-    
 }
+
 export const fetchWeatherForHoursinDay = (city) => async dispatch => {
     const response = await fetchWeatherForHours(city);
-    if(response === undefined) {
-        dispatch(fetchCityError(response));
+    
+    if(response === undefined || response.cod === '404') {
+        dispatch(fetchWeatherForHoursError(response));
     }else{
-      dispatch(gainWetherForHours(formatObjectToCreatChart(response)))
+        console.log(response.llist);
+      dispatch(fetchWeatherForHoursRequest())
+      dispatch(gainWetherForHours(formatObjectToCreatChart(response.list)))
     }
     
     

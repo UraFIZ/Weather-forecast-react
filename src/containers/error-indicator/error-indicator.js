@@ -2,13 +2,14 @@ import React from 'react';
 import './error-indicator.css';
 import { connect } from 'react-redux';
 
-const ErrorIndicator = ({error}) => {
-  return <div>{error}</div>
+const ErrorIndicator = ({errorFormCity, errorFromCard }) => {
+  return <div>{errorFormCity}, {errorFromCard}</div>
 };
 
-const mapStateToProps = ({cityList: {error}}) => {
+const mapStateToProps = ({cityList: {error}, cardList: {errorMes}}) => {
   return {
-      error
+     errorFormCity: error,
+     errorFromCard: errorMes
   }
   }
 export default connect(mapStateToProps)(ErrorIndicator)

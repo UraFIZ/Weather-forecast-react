@@ -22,7 +22,6 @@ import './card.detaile.css';
 
     render() {
        const {city} =this.props
-       console.log(city)
        if(!_.isEmpty(city)) {
         const {country="", name="", speed, pressure, description, humidity, sunrise, sunset, main } = transformCityDataToDetail(city);
         const mainForBG = convertToProperBackgroundFormat(main);
@@ -69,7 +68,7 @@ import './card.detaile.css';
                               </tbody>
                           </table>
                       <h4 className="details-subtitle">Chart of temp for hours</h4> 
-                      {this.props.chartData !== undefined ? <Chart  data={this.props.chartData}/>: <UndefinedNotification info={"The data is not available"} />}       
+                      { _.isEmpty(this.props.error)  ? <Chart  data={this.props.chartData}/>: <UndefinedNotification info={"The data is not available"} />}       
                       </div>
                   <Link className="card-btn center" to="/">Back to Index</Link> 
                  </div>    
@@ -83,7 +82,7 @@ import './card.detaile.css';
     }
 }
 
-const mapStateToProps = ({cardList: {activeCity, chartData}}) => {
+const mapStateToProps = ({cardList: {activeCity, chartData, error}}) => {
 return {
     city: activeCity,
     chartData

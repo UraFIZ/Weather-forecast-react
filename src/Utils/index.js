@@ -154,7 +154,7 @@ export const fetchWeatherForHours = async (city) => {
       fetchCityError(apo_call.status);
   }
 const response = await apo_call.json();
-return response.list;
+return response;
 }
 
 export const fetchCite = async (city) => {
