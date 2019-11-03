@@ -85,6 +85,45 @@ export const convertToProperWeatherFormat = (data) => {
       return "sunny"
   }
 }
+export const convertToProperBackgroundFormat = (data) => {
+  switch (data) {
+    case "Clouds": {
+      return "cloudy"
+    }
+    case "Clear": {
+      return "clear"
+    }
+    case "Fog": {
+      return "fog"
+    }
+    case "Mist": {
+      return "fog"
+    }
+    case "Haze": {
+      return "fog"
+    }
+    case "Dust": {
+      return "fog"
+    }
+    case "Smoke": {
+      return "fog"
+    }
+    case "Drizzle": {
+      return "drizzle"
+    }
+    case "Rain": {
+      return "rain"
+    }
+    case "Snow": {
+      return "snow"
+    }
+    case "Thunderstorm": {
+      return "rain"
+    }
+    default:
+      return "clear"
+  }
+}
 export const getCelsius = (data) => {
   let item = Math.floor(data - 273.15);
   return item;
@@ -165,5 +204,18 @@ return {
       ]
     }
   ]
+}
+}
+export const transformCityDataToDetail = (data) => {
+  if(!data) {
+      return;
+  }
+return {
+  ...data.wind,
+  description: data.weather? data.weather[0].description: data.weather,
+  ...data.main,
+  name: data.name,
+  ...data.sys,
+  main: data.weather ? data.weather[0].main : data.weather
 }
 }

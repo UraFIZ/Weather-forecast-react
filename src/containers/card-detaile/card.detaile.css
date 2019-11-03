@@ -5,13 +5,12 @@
     height: 100%;
     width: 100%;
     z-index: -1;
-    opacity: .15;
+    opacity: .5;
     overflow: hidden;
 }
 .bg-video-content {
     height: 100%;
     width: 100%;
-    -o-object-fit: cover;
     object-fit: cover;
 }
 .details-wrapper {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchSelectedCard, fetchWeatherForHoursinDay } from '../../redux/action';
 import UndefinedNotification from '../../components/undefined-notification'
 import Chart from '../../components/chart';
+import {transformCityDataToDetail, convertToProperBackgroundFormat} from '../../Utils'
 import './card.detaile.css';
 
  class CardDetaile extends Component {
@@ -12,27 +13,16 @@ import './card.detaile.css';
     this.props.fetchWeatherForHoursinDay(id);
     this.props.fetchSelectedCard(id);
     }
-    transformCityDataToDetail =(data) => {
-        if(!data) {
-            return;
-        }
-    return {
-        ...data.wind,
-        description: data.weather? data.weather[0].description: data.weather,
-        ...data.main,
-        name: data.name,
-        ...data.sys
-    }
-}
+
     render() {
-        const {city={}} =this.props;
-       const {country="", name="", speed, pressure, description, humidity, sunrise, sunset } = this.transformCityDataToDetail(city)
+       const {city={}} =this.props
+       const {country="", name="", speed, pressure, description, humidity, sunrise, sunset, main } = transformCityDataToDetail(city);
+       const mainForBG = convertToProperBackgroundFormat(main);
         return (
             <div className="section-details">
                 <div className="bg-video">
                 <video className="bg-video-content" autoPlay muted loop>
-                        <source src={require("../../assets/video/rain.mp4")} type="video/mp4"/>
-                        <source src="/assets/video.webm" type="video/webm" />
+                        <source src={require(`../../assets/video/${mainForBG}.mp4`)} type="video/mp4"/>
                         Your browser is not supported!
                     </video>
                 </div>

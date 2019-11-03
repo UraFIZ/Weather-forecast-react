@@ -91,7 +91,6 @@ export const fetchCitySuccess = (city) => async dispatch => {
 }
 export const fetchWeatherForHoursinDay = (city) => async dispatch => {
     const response = await fetchWeatherForHours(city);
-    console.log(response)
     if(response === undefined) {
         dispatch(fetchCityError(response));
     }else{
