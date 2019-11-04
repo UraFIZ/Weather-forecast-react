@@ -3,7 +3,7 @@ import './error-indicator.css';
 import { connect } from 'react-redux';
 
 const ErrorIndicator = ({errorFormCity, errorFromCard }) => {
-  return <div>{errorFormCity}, {errorFromCard}</div>
+  return <div className="text-error">{errorFormCity}, {errorFromCard}</div>
 };
 
 const mapStateToProps = ({cityList: {error}, cardList: {errorMes}}) => {

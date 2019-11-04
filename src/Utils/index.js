@@ -7,7 +7,7 @@ export const compose = (...funcs) => (comp) => {
 };
 
 export const transformData = (peyload) => {
-  const transData = [{
+    const transData = [{
       id: peyload.id,
       city: peyload.name,
       mainTemp: peyload.main.temp,
@@ -19,6 +19,7 @@ export const transformData = (peyload) => {
   return {
     ..._.mapKeys(transData, 'city')
   }
+  
 }
 export const deleteCite = (prevstate, city) => {
   return _.omit(prevstate, city);
@@ -146,7 +147,7 @@ const fetchCityError = (error) => {
   }
 }
 export const fetchWeatherForHours = async (city) => {
-  const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
+  const API_KEY = 'abb370dff2f94444144aa01b6ffc832a';
   const apo_call = await fetch(
       `   https://api.openweathermap.org/data/2.5/forecast?q=${city},us&mode=json&appid=${API_KEY}`
   )
@@ -158,7 +159,7 @@ return response;
 }
 
 export const fetchCite = async (city) => {
-  const API_KEY = 'f16f36f3944ac10ae9bea64d42adffa1';
+  const API_KEY = 'abb370dff2f94444144aa01b6ffc832a';
   const apo_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
   )

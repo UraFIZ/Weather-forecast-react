@@ -6,13 +6,13 @@ form {
 }
 .btn-main {
     color: #fff !important;
-    background-color: #7ed56f !important;
-    border-color: #7ed56f !important;
+    background-image: linear-gradient(to right, #F44336, #FFEB3B) !important;
+    border:none !important;
 }
 .btn-main:hover {
     color: #7ed56f !important;
-    background-color: #fff !important;
-    border-color: #7ed56f !important;
+    background-image: linear-gradient(to right, #FFEB3B, #F44336) !important;
+    border: none !important;
 } 
 .form-control:focus {
     background-color: #fff !important;

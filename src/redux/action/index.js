@@ -80,7 +80,7 @@ export const deleteCity = (city) => {
 
 export const fetchCitySuccess = (city) => async dispatch => {
     const response = await fetchCite(city);
-    if(response.cod === '404') {
+    if(response.cod !==200) {
         dispatch(fetchCityError(response.message));
     }else{
         const transformCity = transformData(response)
@@ -103,11 +103,9 @@ export const fetchCitySuccess = (city) => async dispatch => {
 
 export const fetchWeatherForHoursinDay = (city) => async dispatch => {
     const response = await fetchWeatherForHours(city);
-    
-    if(response === undefined || response.cod === '404') {
+    if(response === undefined || response.cod !== "200") {
         dispatch(fetchWeatherForHoursError(response));
     }else{
-        console.log(response.llist);
       dispatch(fetchWeatherForHoursRequest())
       dispatch(gainWetherForHours(formatObjectToCreatChart(response.list)))
     }

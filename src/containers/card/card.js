@@ -6,7 +6,7 @@ import { convertToProperWeatherFormat, minmaxTemp } from '../../Utils'
 
 function Card(props) {
 
-  const { deleteCity, updateSelectedCard, data, } = props;
+  const { deleteCity, updateSelectedCard, data} = props;
   const { city, id, mainArr, weatherArr, pressure, rain } = data;
   const { temp_min, temp_max } = mainArr
   const { main } = weatherArr[0];
@@ -35,7 +35,7 @@ function Card(props) {
         <div className="card-box-down">
           <button className="card-btn" onClick={() => deleteCity(city)}>Delete a city</button>
           <button className="card-btn" onClick={() => updateSelectedCard(city)}>Reload the card</button>
-          <Link className="card-btn" to={`/${city}`}>Show detele info</Link>
+          <Link  className="card-btn" to={`/${city}`}>Show detele info</Link>
         </div>
       </div>
     </div>
@@ -51,4 +51,5 @@ const mapStateToProps = ({ cityList: { citis, error, loading } }) => {
     citis, error, loading
   }
 }
+
 export default connect(mapStateToProps)(Card)

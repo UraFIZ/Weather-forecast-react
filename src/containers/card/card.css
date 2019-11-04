@@ -19,7 +19,7 @@
     backface-visibility: hidden;
     border-radius: 3px;
     overflow: hidden;
-    border: 1px solid #7ed56f;
+    background-color: #FFEB3B;
 }
 .card:hover .card-side--front {
     -webkit-transform: rotateY(-180deg);
@@ -193,5 +193,5 @@ a.card-btn {
     font-size: 14px;
 }
 .card-strong-text {
-    color: black;
+    color: #FF5722;
 }

@@ -1,0 +1,9 @@
+.notification{
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: red;
+    font-weight: bold;
+}

@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+According to the test task i created this weather forecast app.
+My description will have the following structure: 
+1) Developing tools (vsc, OpenWeather.com, react, redux,  lodash, chart.js, bootstrap for react js )
+2) The architecture of the project ( create, delete. update).
+2.1) Create carts consists of the next steps: 
+2.1.1) Registration in OpenWeather.com api and gain a key
+2.2.2) Using it in action creater to get a set of data. All functions use in the project i put in the Utilits file. 
+2.2.3) A received response i get through the function-transformer to get a necessary set of data. In case i got an error i initiate to sent an action creater to the reducer with the error. After this error with the help of function connet get recevied by the ErrorIndicator component and reders in the componet CardList
+2.2.4) After getting a transformed data i save it in the localStorage and shortly afterward sent an ac to the reduce CityList
+2.2.5) These cards reder in the CardList component 
+2.2) To make a deleting card as easy as possible i decided to initiale a propety city of global state as a object and with the help of lodash (
+export const deleteCite = (prevstate, city) => {
+  return _.omit(prevstate, city);
+}) i delete a needed object.
+2.3) The most interesting part is updating of app.
+2.3.1) I could not figure out anything better as the expressions in the CardList component
+                                         action creater
+export const fetchInitialDataFormLS = (data) => () => (dispatch) =>{
+    if(data !== null && Object.entries(data).length !== 0 ) {
+        dispatch(fetchCityRequest())
+        data.map(item => dispatch(fetchCitySuccess(item)))
+    }else{
+        const cards = JSON.parse(localStorage.getItem('cards'));
+        dispatch(fetchCityInit(cards));
 
-## Available Scripts
+    } 
+}
+fetchInitialDataFormLS - is the hof thet firstly recivece  a data from the ls and i check if data form the ls is not null or empty object i loop through the array and each item i dispatch to the reducer to make a store the same as a ls 
+};
+This fetchInitialDataFormLS we dispatch with the help of bind action creators in mapDispatchToProps and initialize after component CardList has been mounted.
+2.3.2) To update a selected card i use the following schema:
+i fetched a new citie's object from the api
+get objects from the ls
+transform data to the arr
+find the index of the needed card in ls thanks to findIndex
+find the arr 
+and replace one to another
+  const newUpdatedArr = [
+      ...transformDataFormLs.slice(0, inx),
+      transData, 
+      ...transformDataFormLs.slice(inx+1)
+  ]
+convert data back to the needed forma return  {
+  ..._.mapKeys(newUpdatedArr, 'city')
+  }
+save in ls and dispatch an acton 
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ I am sorry for disorganizing
