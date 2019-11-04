@@ -122,7 +122,7 @@ export const convertToProperBackgroundFormat = (data) => {
       return "rain"
     }
     default:
-      return "clear"
+      return "cloudy"
   }
 }
 export const getCelsius = (data) => {
