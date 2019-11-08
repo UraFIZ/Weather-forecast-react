@@ -1,9 +1,9 @@
 import React from 'react'
-import  './undefined-notification.css';
+import '../../styles/undefined-notification.css';
 
  function UndefinedNotification(props) {
     return (
-        <div className="notification" className="notification">
+        <div className="notification">
             {props.info}
         </div>
     )

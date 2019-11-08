@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
 import thunkMiddleware from 'redux-thunk';
-
-import reducers from './redux/reducers';
+import * as serviceWorker from './library/serviceWorker';
+import reducers from './reducers';
 import App from './App';
 import ErrorBoundry from './components/error-boundry';
-
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
@@ -17,12 +15,11 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddle
 ReactDOM.render(
     <Provider store={store}>
         <ErrorBoundry>
-        <Router>
-            <App />
-        </Router>
+            <Router>
+                <App />
+            </Router>
         </ErrorBoundry>
-    </Provider>
-    , document.getElementById('root'));
+    </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
