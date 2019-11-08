@@ -1,5 +1,5 @@
 import React from 'react';
-import './error-indicator.css';
+import '../../styles/error-indicator.css';
 import { connect } from 'react-redux';
 
 const ErrorIndicator = ({errorFormCity, errorFromCard }) => {

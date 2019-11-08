@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { fetchSelectedCard, fetchWeatherForHoursinDay } from '../../redux/action';
-import UndefinedNotification from '../../components/undefined-notification';
+import {transformCityDataToDetail, convertToProperBackgroundFormat} from '../../Utils';
 import Chart from '../../components/chart';
-import {transformCityDataToDetail, convertToProperBackgroundFormat} from '../../Utils'
-import './card.detaile.css';
 import Spinner from '../../components/spinner';
+import UndefinedNotification from '../../components/undefined-notification';
+import '../../styles/card.detaile.css';
 
  class CardDetaile extends Component {
     state = {

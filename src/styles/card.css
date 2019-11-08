@@ -49,48 +49,47 @@
     border-top-right-radius: 3px;
 }
 .card-picture-Clouds {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(0,123,255,.25)), to(#495057)),url(../../assets/cloudy.png);
-    background-image: linear-gradient(to right bottom, rgba(0,123,255,.25), #495057),url(../../assets/cloudy.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(0,123,255,.25)), to(#495057)),url(../assets/cloudy.png);
+    background-image: linear-gradient(to right bottom, rgba(0,123,255,.25), #495057),url(../assets/cloudy.png);
 }
 .card-picture-Clear {
-    background-image: url(../../assets/clear.png);
-    background-image: url(../../assets/clear.png);
+    background-image: url(../assets/clear.png);
 }
 .card-picture-Fog {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
-    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../assets/fog.png);
 }
 .card-picture-Mist {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
-    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../assets/fog.png);
 }
 .card-picture-Haze {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
-    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../assets/fog.png);
 }
 .card-picture-Dust {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/fog.png);
-    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/fog.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../assets/fog.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../assets/fog.png);
 }
 .card-picture-Smoke {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../../assets/smoke.png);
-    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../../assets/smoke.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#484b47), to(#eaf3f0)),url(../assets/smoke.png);
+    background-image: linear-gradient(to right bottom, #575a57, #e1e9e6),url(../assets/smoke.png);
 }
 .card-picture-Drizzle {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#3d413b81), to(#6d6748)),url(../../assets/Drizzle.png);
-    background-image: linear-gradient(to right bottom, #3d413b81, #6d6748),url(../../assets/Drizzle.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#3d413b81), to(#6d6748)),url(../assets/Drizzle.png);
+    background-image: linear-gradient(to right bottom, #3d413b81, #6d6748),url(../assets/Drizzle.png);
 }
 .card-picture-Rain {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#3d413b81), to(#39a8b3)),url(../../assets/rain.png);
-    background-image: linear-gradient(to right bottom, #3d413b81, #39a8b3),url(../../assets/rain.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#3d413b81), to(#39a8b3)),url(../assets/rain.png);
+    background-image: linear-gradient(to right bottom, #3d413b81, #39a8b3),url(../assets/rain.png);
 }
 .card-picture-Snow {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#343a40), to(#007bff)),url(../../assets/snow.png);
-    background-image: linear-gradient(to right bottom, #343a40, #007bff),url(../../assets/snow.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#343a40), to(#007bff)),url(../assets/snow.png);
+    background-image: linear-gradient(to right bottom, #343a40, #007bff),url(../assets/snow.png);
 }
 .card-picture-Thunderstorm {
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#212529), to(#6c757d)),url(../../assets/Thunderstorm.png);
-    background-image: linear-gradient(to right bottom, #212529, #6c757d),url(../../assets/Thunderstorm.png);
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#212529), to(#6c757d)),url(../assets/Thunderstorm.png);
+    background-image: linear-gradient(to right bottom, #212529, #6c757d),url(../assets/Thunderstorm.png);
 }
 .card-heading {
     font-size: 26px;

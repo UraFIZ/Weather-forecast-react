@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import './card-list.css';
+import '../../styles/card-list.css';
 import Card from '../card';
 import { deleteCity, updateSelectedCard, fetchInitialDataFormLS } from '../../redux/action';
 import ErrorIndicator from '../error-indicator';

@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { fetchCitySuccess } from '../../redux/action';
-import './search-bar.css';
+import '../../styles/search-bar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class SearchBar extends Component {
-    
+
     state = {
         value: '',
         data: this.props.data,
@@ -36,4 +36,4 @@ class SearchBar extends Component {
 }
 
 
-export default connect(null, {fetchCitySuccess})(SearchBar) 
+export default connect(null, {fetchCitySuccess})(SearchBar)
