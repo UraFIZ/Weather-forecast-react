@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import '../../styles/card-list.css';
-import Card from '../card';
-import { deleteCity, updateSelectedCard, fetchInitialDataFormLS } from '../../redux/action';
-import ErrorIndicator from '../error-indicator';
-import Spinner from '../../components/spinner';
+import '../styles/card-list.css';
+import { deleteCity, updateSelectedCard, fetchInitialDataFormLS } from '../library/apiUtil';
+import Spinner from '../components/spinner';
+import Card from './card';
+import ErrorIndicator from './error-indicator';
 
 class CardList extends Component {
 

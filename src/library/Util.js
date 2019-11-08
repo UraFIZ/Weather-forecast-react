@@ -19,7 +19,7 @@ export const transformData = (peyload) => {
   return {
     ..._.mapKeys(transData, 'city')
   }
-  
+
 }
 export const deleteCite = (prevstate, city) => {
   return _.omit(prevstate, city);
@@ -39,7 +39,7 @@ export const updateCurrentCity = (data) => {
   const inx = transformDataFormLs.findIndex(item => item.city === transData.city);
   const newUpdatedArr = [
       ...transformDataFormLs.slice(0, inx),
-      transData, 
+      transData,
       ...transformDataFormLs.slice(inx+1)
   ]
   return  {
@@ -158,7 +158,7 @@ const response = await apo_call.json();
 return response;
 }
 
-export const fetchCite = async (city) => {
+export const fetchCity = async (city) => {
   const API_KEY = 'abb370dff2f94444144aa01b6ffc832a';
   const apo_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
