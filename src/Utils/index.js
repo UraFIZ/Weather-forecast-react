@@ -159,7 +159,7 @@ return response;
 }
 
 export const fetchCite = async (city) => {
-  const API_KEY = 'abb370dff2f94444144aa01b6ffc832a';
+  const API_KEY = 'bb96c7f9ac6f57dc00333727c5407547';
   const apo_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
   )
